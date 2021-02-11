@@ -1,14 +1,11 @@
 cmake_minimum_required(VERSION 3.1)
 
+set(PYTHON_EXECUTABLE "F:\\PythonForInject")
+set(PYTHON_INCLUDE_DIRS "F:\\PythonForInject\\include")
+set(PYTHON_LIBRARIES "F:\\PythonForInject\\libs\\python38.lib")
+set(PYTHONLIBS_FOUND "TRUE")
+
 project(TTMMScriptingLibrary)
-find_package(PythonInterp REQUIRED)
-find_package(PythonLibs REQUIRED)
+add_subdirectory(../extern/pybind11 build)
+pybind11_add_module(TTMMScriptingLibrary library.cpp log.hpp memaccess.hpp)
 
-include_directories("F:\\PythonForInject\\include")
-
-add_library(TTMMScriptingLibrary SHARED library.cpp library.h ttlib.h )
-target_link_libraries(TTMMScriptingLibrary "F:\\PythonForInject\\libs\\python38.lib")
-set_target_properties(TTMMScriptingLibrary PROPERTIES COMPILE_OPTIONS "-m32" LINK_FLAGS "-m32")
-
-set_target_properties(TTMMScriptingLibrary PROPERTIES SUFFIX .pyd)
-set_target_properties(TTMMScriptingLibrary PROPERTIES PREFIX "")
