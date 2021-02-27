@@ -10,7 +10,7 @@ set(PYTHON_INCLUDE_DIRS "C:\\Users\\javst\\AppData\\Local\\Programs\\Python\\Pyt
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 ")
 STRING (REGEX REPLACE "/RTC" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-set(SOURCE_FILES main.cpp ../api/memaccess.hpp)
+set(SOURCE_FILES main.cpp ../api/memaccess.hpp ../api/game.hpp)
 
 SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "C:\\local\\boost_1_75_0\\")
 SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "C:\\local\\boost_1_75_0\\stage\\lib")

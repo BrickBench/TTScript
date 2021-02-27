@@ -78,12 +78,16 @@ void init(){
 
     (*replacedFunc)();
 
-    std::cout << "Initializing python runtime" << std::endl;
+    std::cout << "Setting Python runtime location" << std::endl;
+
+    Py_SetPythonHome(L"Python");
+
+    std::cout << "Initializing Python runtime" << std::endl;
 
     Py_Initialize();
+
     PyRun_SimpleString("import sys");
 
-    std::cout << "Python initialized" << std::endl;
     std::cout << "Reading scripts" << std::endl;
 
 
@@ -209,8 +213,8 @@ int injectFunction(int targetInstruction, void * func){
 
 void openConsole(){
     AllocConsole();
-    freopen("CON", "w", stdout);
-    freopen("CON", "w", stderr);
+    freopen("script.log", "w", stdout);
+    freopen("script.log", "w", stderr);
     freopen("CON", "r", stdin); // Note: "r", not "w".
 }
 
